@@ -1,4 +1,4 @@
-# 모임통장 환전지갑 그리고 여행까지
+# 모임통장 환전지갑 그리고 여행까지! 환전원큐
 # 환전원큐
 
 [프로젝트 홈페이지 - https://koposoftware.github.io/2022_6_jypark/](https://koposoftware.github.io/2022_6_jypark/)
