@@ -3,36 +3,35 @@
 [프로젝트 홈페이지 - https://koposoftware.github.io/2022_6_jypark/](https://koposoftware.github.io/2022_6_jypark/)
 
 # 1. 프로젝트 개요
-
-<img src="summary.png"/>
-<br>
+<img src="summary.png"/><br>
 - 해외여행에 대한 관심과 출국자 수는 매년 증가하는 추세<br>
 - 해외여행의 진행과정을 빠르게 도울 수 있는 모임통장과 환전지갑서비스를 제공하는 원큐 플랫폼
 
-# 2. 프로젝트 제안서
+# 2. 서비스 기능
+### 기능리스트
+<img src="ServiceList.png"/><br>
+### 모임통장
+<img src="function1.png"/><br>
+### 환율정보
+<img src="function2.png"/><br>
+### 예약환전
+<img src="function3.png"/><br>
 
-프로젝트 제안서를 설명하세요. 발표자료와 동영상을 추가하세요. 시스템의 아키텍쳐 설명도 추가하세요.
-
- 
-[발표자료<img src="ppt.jpg"/>](/project.pptx)<br>
-<br> <br> 
-  <iframe width="424" height="238" src="https://www.youtube.com/embed/reOGfxYJre0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-# 3. 프로젝트 결과
+# 3. 프로젝트 설계
 ### 시스템 아키텍처
    <img src="architecture.png"/><br>
 ### ERD
    <img src="erd.png"/><br>
-## 발표 ppt 
+### 프로젝트 일정
+<img src="GanttChart.png"/><br>
 
+## 발표 ppt 
 [발표자료<img src="ppt.png"/>](/발표ppt.pptx)<br>
+
 ## 시연 동영상 
 
   <iframe width="424" height="238" src="https://www.youtube.com/embed/reOGfxYJre0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-# 4. 기타
-그외 프로젝트를 더욱 설명할수 있는 것들을 추가하세요
- 
 # 5. 본인 소개
 
 |이름 |박준영|![박준영](/박준영.jpg)|
