@@ -25,7 +25,7 @@
    <img src="erd.png"/><br>
 ## 발표 ppt 
 
-[발표자료<img src="ppt.png"/>](/project.pptx)<br>
+[발표자료<img src="ppt.png"/>](/발표ppt.pptx)<br>
 ## 시연 동영상 
 
   <iframe width="424" height="238" src="https://www.youtube.com/embed/reOGfxYJre0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -34,8 +34,6 @@
 그외 프로젝트를 더욱 설명할수 있는 것들을 추가하세요
  
 # 5. 본인 소개
-
-본인 소개를 추가하세요
 
 |이름 |박준영|![박준영](/박준영.jpg)|
 |이메일 | pjy2958@naver.com|
