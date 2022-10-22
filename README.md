@@ -18,6 +18,17 @@
 <img src="function3.png"/><br>
 
 # 3. 프로젝트 설계
+### 개발환경
+```
+- OS : macOS Monterey
+- DB : Oracle
+- Language : Java, JavaScript, Python
+- IDE : IntelliJ, VisualStudioCode, DataGrip
+- Framework : SpringBoot, BootStrap, MyBatis
+- Server : apache, tomcat9
+- Cloud : Oracle Cloud
+- VCS : Github
+```
 ### 시스템 아키텍처
    <img src="architecture.png"/><br>
 ### ERD
