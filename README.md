@@ -19,9 +19,9 @@
   <iframe width="424" height="238" src="https://www.youtube.com/embed/reOGfxYJre0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # 3. 프로젝트 결과
-프로젝트 결과를 추가하세요. 발표자료. 시연동영상을 추가하세요.
+### 시스템 아키텍처
    <img src="architecture.png"/><br>
-   
+### ERD
    <img src="erd.png"/><br>
 ## 발표 ppt 
 
@@ -37,7 +37,7 @@
 
 본인 소개를 추가하세요
 
-|이름 |박준영|![gdKO](/박준영.jpg)|
+|이름 |박준영|![박준영](/박준영.jpg)|
 |이메일 | pjy2958@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Python, C++|
