@@ -45,7 +45,7 @@
 
 # 5. 본인 소개
 
-|이름 |박준영|![박준영](/박준영.jpeg)|
+|이름 |박준영|![박준영](박준영.jpeg)|
 |이메일 | pjy2958@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Python, C++|
