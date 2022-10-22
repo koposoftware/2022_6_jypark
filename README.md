@@ -1,4 +1,5 @@
-# 프로젝트 제목
+# 모임통장 환전지갑 그리고 여행까지
+# 
 
 [프로젝트 홈페이지 - https://koposoftware.github.io/finalproject_template/](https://koposoftware.github.io/finalproject_template/)
 
