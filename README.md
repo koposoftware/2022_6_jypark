@@ -8,17 +8,17 @@
 - 해외여행의 진행과정을 빠르게 도울 수 있는 모임통장과 환전지갑서비스를 제공하는 원큐 플랫폼
 
 # 2. 서비스 기능
-### 기능리스트
+### 2-1. 기능리스트
 <img src="ServiceList.png"/><br>
-### 모임통장
+### 2-2. 모임통장
 <img src="function1.png"/><br>
-### 환율정보
+### 2-3. 환율정보
 <img src="function2.png"/><br>
-### 예약환전
+### 2-4. 예약환전
 <img src="function3.png"/><br>
 
 # 3. 프로젝트 설계
-### 개발환경
+### 3-1. 개발환경
 ```
 - OS : macOS Monterey
 - DB : Oracle
@@ -29,11 +29,11 @@
 - Cloud : Oracle Cloud
 - VCS : Github
 ```
-### 시스템 아키텍처
+### 3-2. 시스템 아키텍처
    <img src="architecture.png"/><br>
-### ERD
+### 3-3. ERD
    <img src="erd.png"/><br>
-### 프로젝트 일정
+### 3-4. 프로젝트 일정
 <img src="GanttChart.png"/><br>
 
 ## 발표 ppt 
@@ -45,7 +45,7 @@
 
 # 5. 본인 소개
 
-|이름 |박준영|![박준영](박준영.jpeg)|
+|이름 |박준영|![박준영](/박준영.jpeg)|
 |이메일 | pjy2958@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Python, C++|
