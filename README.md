@@ -4,7 +4,8 @@
 
 # 1. 프로젝트 개요
 
-<img src="summary.PNG"/><br>
+<img src="summary.png"/>
+<br>
 - 해외여행에 대한 관심과 출국자 수는 매년 증가하는 추세
 - 해외여행의 진행과정을 빠르게 도울 수 있는 모임통장과 환전지갑서비스를 제공하는 원큐 플랫폼
 
@@ -21,7 +22,7 @@
 프로젝트 결과를 추가하세요. 발표자료. 시연동영상을 추가하세요.
    <img src="architecture.png"/><br>
    
-   <img src="erd.PNG"/><br>
+   <img src="erd.png"/><br>
 ## 발표 ppt 
 
 [발표자료<img src="ppt.jpg"/>](/project.pptx)<br>
@@ -36,8 +37,8 @@
 
 본인 소개를 추가하세요
 
-|이름 |고길동|![gdKO](/gdko.jpg)|
-|연락처 | gdko(@)kopo.ac.kr|
+|이름 |박준영|![gdKO](/박준영.jpg)|
+|이메일 | pjy2958@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Spring, Oracle|
 |자격증| 20xx년 정보처리기사 |
