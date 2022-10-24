@@ -1,0 +1,22 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/lib/chart/chart.min.js"></script>
+<script src="/resources/lib/easing/easing.min.js"></script>
+<script src="/resources/lib/waypoints/waypoints.min.js"></script>
+<script src="/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/resources/lib/tempusdominus/js/moment.min.js"></script>
+<script src="/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="https://kit.fontawesome.com/012ae4665d.js" crossorigin="anonymous"></script>
+<script src="/resources/js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/resources/js/auth.js"></script>
+<script src="/resources/js/exchangeInfo.js"></script>
+<script src="/resources/js/transactionHistory.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>

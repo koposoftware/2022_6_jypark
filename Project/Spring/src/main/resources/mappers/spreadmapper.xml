@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finalproject.spread.mapper.SpreadMapper">
+    <resultMap id="SpreadMap" type="SpreadVO">
+        <result column="CCY_CODE" property="ccyCode"/>
+        <result column="CNTRY_NM_KR" property="cntryNmKr"/>
+        <result column="BASIC_SPREAD_RATE" property="basicSpreadRate"/>
+        <result column="EVENT_SPREAD_RATE" property="eventSpreadRate"/>
+        <result column="EXCHANGE_MIN_AMOUNT" property="exchangeMinAmount"/>
+        <result column="EXCHANGE_MIN_INPUT" property="exchangeMinInput"/>
+        <result column="EVENT_S_DATE" property="eventStartDate"/>
+        <result column="EVENT_E_DATE" property="eventEndDate"/>
+    </resultMap>
+    <select id="selectSpread" resultMap="SpreadMap">
+        SELECT *
+        FROM SPREAD
+    </select>
+    <select id="selectSpreadByCcyCode" parameterType="String" resultMap="SpreadMap">
+        SELECT *
+        FROM SPREAD
+        WHERE CCY_CODE = #{ccyCode}
+    </select>
+</mapper>

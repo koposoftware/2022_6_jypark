@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finalproject.exchange.mapper.ExchangeMapper">
+    <resultMap id="ExcRateMap" type="ExcRateVO">
+        <result column="CCY_CODE" property="ccyCode"/>
+        <result column="BASIC_DATE" property="renewalRate"/>
+        <result column="BUY_EXC_RATE" property="buyExcRate"/>
+        <result column="SELL_EXC_RATE" property="sellExcRate"/>
+        <result column="SEND_EXC_RATE" property="sendExcRate"/>
+        <result column="REC_EXC_RATE" property="recExcRate"/>
+        <result column="BASIC_RATE" property="basicRate"/>
+        <result column="USD_RATE" property="usdRate"/>
+    </resultMap>
+    <resultMap id="ExchangeHistoryMap" type="ExchangeHistoryVO">
+        <result column="HISTORY_NO" property="historyNo"/>
+        <result column="WALLET_NO" property="walletNo"/>
+        <result column="EXC_DATE" property="exchangeDate"/>
+        <result column="SELL_CCY_CODE" property="sellCcyCode"/>
+        <result column="SELL_AMOUNT" property="sellAmount"/>
+        <result column="BUY_CCY_CODE" property="buyCcyCode"/>
+        <result column="BUY_AMOUNT" property="buyAmount"/>
+        <result column="APPLN_EXC_RATE" property="applyExchangeRate"/>
+        <result column="STATE" property="state"/>
+        <result column="ID" property="id"/>
+    </resultMap>
+    <resultMap id="ExcReservationMap" type="ExcReservationVO">
+        <result column="RESERVATION_NO" property="reservationNo"/>
+        <result column="ACCOUNT_NO" property="accountNo"/>
+        <result column="WALLET_NO" property="walletNo"/>
+        <result column="CCY_CODE" property="ccyCode"/>
+        <result column="TARGET_BUY_RATE" property="targetBuyRate"/>
+        <result column="TARGET_BUY_AMOUNT" property="targetBuyAmount"/>
+        <result column="EXCHANGE_AMOUNT" property="exchangeAmount"/>
+        <result column="EXPIRATION_DATE" property="expirationDate"/>
+        <result column="ALARM" property="alarm"/>
+        <result column="STATE" property="state"/>
+    </resultMap>
+    <select id="selectExcRateByccyCode" parameterType="String" resultMap="ExcRateMap">
+        SELECT CCY_CODE, TO_CHAR(BASIC_DATE, 'MM/dd') AS BASIC_DATE, BASIC_RATE, BUY_EXC_RATE, SELL_EXC_RATE, SEND_EXC_RATE, REC_EXC_RATE, EXCHANGE_RATE, USD_RATE
+        FROM EXC_RATE
+        WHERE CCY_CODE = #{ccyCode}
+          AND BASIC_DATE BETWEEN ADD_MONTHS(TO_DATE(#{nowDate}, 'YYYYMMdd'), -3) AND TO_DATE(#{nowDate}, 'YYYYMMdd')
+        ORDER BY BASIC_DATE ASC
+    </select>
+    <select id="callExchangeProcedure" parameterType="ExchangeHistoryVO" statementType="CALLABLE">
+        {
+            CALL EXCHANGE_PROCESS_PROC(
+                #{historyNo, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{walletNo, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{sellCcyCode, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{sellAmount, mode=IN, javaType=int, jdbcType=INTEGER},
+                #{buyCcyCode, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{buyAmount, mode=IN, javaType=int, jdbcType=INTEGER},
+                #{applyExchangeRate, mode=IN, javaType=float, jdbcType=INTEGER},
+                #{id, mode=IN, javaType=String, jdbcType=VARCHAR})
+            }
+    </select>
+    <select id="selectExcHistory" parameterType="String" resultMap="ExchangeHistoryMap">
+        SELECT *
+        FROM EXC_HISTORY
+        WHERE WALLET_NO = #{walletNo} AND BUY_CCY_CODE = #{ccyCode}
+    </select>
+    <select id="selectExcHistoryByNo" parameterType="String" resultMap="ExchangeHistoryMap">
+        SELECT *
+        FROM EXC_HISTORY
+        WHERE WALLET_NO = #{walletNo}
+        ORDER BY EXC_DATE DESC
+    </select>
+    <insert id="insertExcReservation" parameterType="ExcReservationVO">
+        INSERT INTO EXC_RESERVATION (RESERVATION_NO, ACCOUNT_NO, WALLET_NO, CCY_CODE, TARGET_BUY_RATE, TARGET_BUY_AMOUNT, EXPIRATION_DATE, ALARM)
+        VALUES (#{reservationNo}, #{accountNo}, #{walletNo}, #{ccyCode}, #{targetBuyRate}, #{targetBuyAmount}, #{expirationDate}, #{alarm})
+    </insert>
+    <select id="selectExcReservationByWalletNo" parameterType="String" resultMap="ExcReservationMap">
+        SELECT RESERVATION_NO, ACCOUNT_NO, WALLET_NO, CCY_CODE, TARGET_BUY_RATE, TARGET_BUY_AMOUNT, EXCHANGE_AMOUNT, EXPIRATION_DATE, ALARM, STATE
+          FROM EXC_RESERVATION
+         WHERE WALLET_NO = #{walletNo}
+         ORDER BY STATE DESC, EXPIRATION_DATE ASC
+    </select>
+    <select id="selectExcReservationAll" resultMap="ExcReservationMap">
+        SELECT RESERVATION_NO, ACCOUNT_NO, WALLET_NO, CCY_CODE, TARGET_BUY_RATE, TARGET_BUY_AMOUNT, EXCHANGE_AMOUNT, EXPIRATION_DATE, ALARM, STATE
+         FROM EXC_RESERVATION
+        WHERE STATE = 'D'
+        ORDER BY TARGET_BUY_RATE DESC, EXPIRATION_DATE ASC
+    </select>
+    <update id="updateExcReservationState" parameterType="ExcReservationVO">
+        UPDATE EXC_RESERVATION
+           SET STATE = #{state}
+         WHERE RESERVATION_NO = #{reservationNo}
+    </update>
+    <update id="updateExcExchangeAmount" parameterType="ExcReservationVO">
+        UPDATE EXC_RESERVATION
+           SET EXCHANGE_AMOUNT = #{exchangeAmount}
+         WHERE RESERVATION_NO = #{reservationNo}
+    </update>
+    <update id="updateExcHistoryState" parameterType="String">
+        UPDATE EXC_HISTORY
+           SET STATE = 'C'
+         WHERE BUY_CCY_CODE = #{ccyCode} AND STATE = 'D' AND WALLET_NO = #{walletNo}
+    </update>
+    <delete id="deleteHoldCurrency" parameterType="String">
+        DELETE FROM HOLD_CURRENCY WHERE CCY_CODE = #{ccyCode} AND WALLET_NO = #{walletNo}
+    </delete>
+</mapper>

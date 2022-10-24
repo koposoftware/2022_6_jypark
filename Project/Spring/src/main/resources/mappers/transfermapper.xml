@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finalproject.transfer.mapper.TransferMapper">
+    <resultMap id="TransactionMap" type="TransactionVO">
+        <result column="HISTORY_NO" property="historyNo"/>
+        <result column="ACCOUNT_NO" property="accountNo"/>
+        <result column="TRANS_AMOUNT" property="transferAmount"/>
+        <result column="TRANS_MEMO" property="transferMemo"/>
+        <result column="TRANS_DATE" property="transferDate"/>
+        <result column="TRANS_TYPE" property="transferType"/>
+    </resultMap>
+    <resultMap id="TotalAmountMap" type="TotalAmountVO">
+        <result column="TRANS_MEMO" property="transferName"/>
+        <result column="TRANS_AMOUNT" property="totalAmount"/>
+    </resultMap>
+    <select id="callTransferProcedure" parameterType="TransactionVO" statementType="CALLABLE">
+        {
+            CALL TRANSACTION_PROCESS_PROC(
+                #{accountNo, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{transferAmount, mode=IN, javaType=int, jdbcType=INTEGER},
+                #{transferMemo, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{transferType, mode=IN, javaType=String, jdbcType=VARCHAR})
+        }
+    </select>
+    <select id="selectTransByAccountNo" parameterType="String" resultMap="TransactionMap">
+        SELECT HISTORY_NO, ACCOUNT_NO, TRANS_AMOUNT, BALANCE, TRANS_MEMO, TRANS_DATE, TRANS_TYPE
+        FROM TRANS_HISTORY
+        WHERE ACCOUNT_NO = #{accountNo}
+          AND TO_CHAR(TRANS_DATE, 'YYYY-MM-DD') BETWEEN #{startDate} AND #{endDate}
+        ORDER BY TRANS_DATE DESC
+    </select>
+    <select id="selectTransByAccountNoOne" parameterType="String" resultMap="TransactionMap">
+        SELECT HISTORY_NO, ACCOUNT_NO, TRANS_AMOUNT, BALANCE, TRANS_MEMO, TRANS_DATE, TRANS_TYPE
+        FROM TRANS_HISTORY
+        WHERE ACCOUNT_NO = #{accountNo}
+          AND TO_CHAR(TRANS_DATE, 'YYYY-MM-DD') = #{startDate}
+        ORDER BY TRANS_DATE DESC
+    </select>
+    <select id="selectMemberTransfer" parameterType="String" resultMap="TotalAmountMap">
+        SELECT TRANS_MEMO, SUM(TRANS_AMOUNT) AS TRANS_AMOUNT
+          FROM TRANS_HISTORY
+         WHERE ACCOUNT_NO = #{accountNo} AND TRANS_TYPE = 'D'
+         GROUP BY TRANS_MEMO
+    </select>
+</mapper>

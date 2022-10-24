@@ -1,0 +1,73 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id 'java'
+    id 'war'
+}
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    compileOnly 'javax.servlet:javax.servlet-api'
+
+    //JSP 추가 시작
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'javax.servlet:jstl'
+    //JSP 추가 끝
+
+    //JUnit4 추가
+    testImplementation("org.junit.vintage:junit-vintage-engine") {
+        exclude group: "org.hamcrest", module: "hamcrest-core"
+    }
+
+    implementation 'com.oracle.database.jdbc:ojdbc8'
+
+    implementation 'com.oracle.database.security:oraclepki'
+    implementation 'com.oracle.database.security:osdt_cert'
+    implementation 'com.oracle.database.security:osdt_core'
+    implementation 'com.oracle.database.jdbc:ucp'
+    //hibernate validator engine ->null값 찾는 용도
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.4.Final'
+    //자바크롤링
+    implementation 'org.jsoup:jsoup:1.15.2'
+
+    //메일인증
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
+    implementation 'org.springframework.boot:spring-boot-starter-mail:2.6.3'
+
+    // coolSMS
+    implementation group: 'net.nurigo', name: 'javaSDK', version: '2.2'
+
+
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

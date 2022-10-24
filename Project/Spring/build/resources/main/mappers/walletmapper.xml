@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finalproject.wallet.mapper.WalletMapper">
+    <resultMap id="WalletMap" type="WalletVO">
+        <result column="WALLET_NO" property="walletNo"/>
+        <result column="ACCOUNT_NO" property="accountNo"/>
+        <result column="ID" property="id"/>
+    </resultMap>
+    <resultMap id="WalletAccountMap" type="WalletAccountVO">
+        <result column="WALLET_NO" property="walletNo"/>
+        <result column="ACCOUNT_NO" property="accountNo"/>
+        <result column="ACCOUNT_ALIAS" property="accountAlias"/>
+        <result column="ID" property="id"/>
+    </resultMap>
+    <resultMap id="HoldCurrencyMap" type="HoldCurrencyVO">
+        <result column="WALLET_NO" property="walletNo"/>
+        <result column="CCY_CODE" property="ccyCode"/>
+        <result column="BALANCE" property="balance"/>
+        <result column="RECEIPT_STATUS" property="receiptStatus"/>
+    </resultMap>
+    <select id="selectWalletByWalletNo" parameterType="String" resultMap="WalletMap">
+        SELECT WALLET_NO, ACCOUNT_NO, ID
+          FROM EXC_WALLET
+         WHERE WALLET_NO = #{walletNo}
+    </select>
+    <insert id="insertWallet" parameterType="String">
+        INSERT INTO EXC_WALLET (WALLET_NO, ACCOUNT_NO, ID) VALUES (#{walletNo}, #{accountNo}, #{id})
+    </insert>
+    <select id="selectWalletJoinPassbook" parameterType="String" resultMap="WalletAccountMap">
+        SELECT W.WALLET_NO, W.ACCOUNT_NO, W.ID
+          FROM PRTCP_ACCOUNT_INFO A INNER JOIN EXC_WALLET W ON A.ACCOUNT_NO = W.ACCOUNT_NO
+         WHERE A.ID = #{loginId}
+    </select>
+    <select id="callExchangeProcedure" parameterType="ExchangeHistoryVO" statementType="CALLABLE">
+        {
+            CALL EXCHANGE_PROCESS_PROC(
+                #{historyNo, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{walletNo, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{sellCcyCode, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{sellAmount, mode=IN, javaType=int, jdbcType=INTEGER},
+                #{buyCcyCode, mode=IN, javaType=String, jdbcType=VARCHAR},
+                #{buyAmount, mode=IN, javaType=int, jdbcType=INTEGER},
+                #{applyExchangeRate, mode=IN, javaType=float, jdbcType=INTEGER},
+                #{id, mode=IN, javaType=String, jdbcType=VARCHAR})
+            }
+    </select>
+    <select id="selectHoldCurrencyById" parameterType="String" resultMap="HoldCurrencyMap">
+        SELECT WALLET_NO, CCY_CODE, BALANCE, RECEIPT_STATUS
+          FROM HOLD_CURRENCY
+         WHERE WALLET_NO = ${walletNo}
+    </select>
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finalproject.travel.mapper.TravelMapper">
+    <resultMap id="PlanMap" type="PlanVO">
+        <result column="ACCOUNT_NO" property="accountNo"/>
+        <result column="CNTRY_CODE" property="countryCode"/>
+        <result column="DEPARTURE_DATE" property="departureDate"/>
+        <result column="ENTRY_DATE" property="entryDate"/>
+        <result column="TARGET_AMOUNT" property="targetAmount"/>
+        <result column="PRTCP_MEMBER_NUM" property="prtcpMemberNum"/>
+    </resultMap>
+    <insert id="insertTravelPlan" parameterType="PlanVO">
+        INSERT INTO TVL_PLAN (ACCOUNT_NO, CNTRY_CODE, DEPARTURE_DATE, ENTRY_DATE, TARGET_AMOUNT, PRTCP_MEMBER_NUM) VALUES (#{accountNo}, #{countryCode}, #{departureDate}, #{entryDate}, #{targetAmount}, #{prtcpMemberNum})
+    </insert>
+
+    <select id="selectTravelPlan" parameterType="String" resultMap="PlanMap">
+        SELECT ACCOUNT_NO, CNTRY_CODE, DEPARTURE_DATE, ENTRY_DATE, TARGET_AMOUNT, PRTCP_MEMBER_NUM
+        FROM TVL_PLAN
+        WHERE ACCOUNT_NO = #{accountNo}
+    </select>
+
+    <select id="countTargetCountry" resultType="TargetRankingVO">
+        SELECT ROWNUM AS RANKING, T.CODE AS COUNTRYNM, T.COUNT AS COUNTMEMBER
+        FROM (
+            SELECT CNTRY_CODE AS CODE, COUNT(*) AS COUNT
+            FROM TVL_PLAN
+            GROUP BY CNTRY_CODE
+            ORDER BY COUNT DESC
+            ) T
+    </select>
+    <select id="selectContryCode" resultType="ContryCodeVO">
+        SELECT CODE AS countryCode, NAME AS countryKrNm
+          FROM CNTRY_CODE
+    </select>
+</mapper>
