@@ -40,8 +40,7 @@
 [발표자료<img src="ppt.png"/>](/발표ppt.pptx)<br>
 
 ## 시연 동영상 
-
-  <iframe width="424" height="238" src="https://www.youtube.com/embed/reOGfxYJre0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="894" height="503" src="https://www.youtube.com/embed/62M1VQEA8ug" title="최종프로젝트_환전원큐_모임통장환전지갑그리고여행_시연영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # 5. 본인 소개
 
